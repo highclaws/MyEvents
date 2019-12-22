@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MyEvents" customModuleProvider="target">
+            <connections>
+                <outlet property="connectButton" destination="0Xp-2m-hN7" id="gxJ-M8-I0c"/>
+                <outlet property="titleLabel" destination="9sT-6A-O0N" id="iJi-Cc-cat"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="AXV-cz-vM8">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sT-6A-O0N">
+                    <rect key="frame" x="105" y="75" width="204" height="55"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                    <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <size key="shadowOffset" width="5" height="-1"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xp-2m-hN7">
+                    <rect key="frame" x="94" y="518" width="226" height="60"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                    <state key="normal" title="Se connecter">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="touchConnect:" destination="-1" eventType="touchUpInside" id="H2t-LS-OLE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="AXV-cz-vM8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2pX-J2-QPH"/>
+                <constraint firstItem="9sT-6A-O0N" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="GBX-Wx-0aa"/>
+                <constraint firstItem="0Xp-2m-hN7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KjI-1Y-CUt"/>
+                <constraint firstAttribute="trailing" secondItem="AXV-cz-vM8" secondAttribute="trailing" id="TwY-sl-Cjt"/>
+                <constraint firstItem="AXV-cz-vM8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UFn-lX-qwo"/>
+                <constraint firstAttribute="bottom" secondItem="AXV-cz-vM8" secondAttribute="bottom" id="c3w-2i-Byl"/>
+                <constraint firstItem="9sT-6A-O0N" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mDq-8F-ICV"/>
+                <constraint firstItem="0Xp-2m-hN7" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="100" id="yTg-S7-dd6"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="97"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background" width="3008" height="2000"/>
+    </resources>
+</document>
