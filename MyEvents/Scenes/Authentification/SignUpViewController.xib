@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="MyEvents" customModuleProvider="target">
             <connections>
+                <outlet property="ErrorLabel" destination="sBs-uh-PNu" id="tUI-kZ-l7b"/>
                 <outlet property="LoginButton" destination="1wa-FF-OhK" id="hsD-E8-Fm0"/>
                 <outlet property="SignUpButton" destination="Sjy-bj-Ir6" id="Ytg-Dk-rFT"/>
                 <outlet property="emailTextField" destination="di1-JN-cDI" id="G3C-Dk-9Yx"/>
@@ -49,7 +50,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password :" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gfj-CV-9jb">
                     <rect key="frame" x="100" y="393" width="214" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HF1-YB-3qc">
                     <rect key="frame" x="100" y="441" width="36" height="21"/>
@@ -60,7 +61,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Example@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="di1-JN-cDI">
                     <rect key="frame" x="100" y="474" width="214" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" textContentType="email"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Sjy-bj-Ir6">
                     <rect key="frame" x="129" y="543" width="159" height="30"/>
@@ -91,6 +92,13 @@
                         <action selector="touchToLogin:" destination="-1" eventType="touchUpInside" id="hA3-Wa-yWd"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBs-uh-PNu">
+                    <rect key="frame" x="80" y="720" width="298" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.56525886058807373" green="0.21658456513398006" blue="0.20711566386615246" alpha="0.85348886986301364" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

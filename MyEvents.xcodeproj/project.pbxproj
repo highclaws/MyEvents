@@ -18,6 +18,12 @@
 		893C656F23B0BF4E009F7861 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C656B23B0BF4E009F7861 /* LoginViewController.swift */; };
 		893C657023B0BF4E009F7861 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C656C23B0BF4E009F7861 /* LoginViewController.xib */; };
 		893C657123B0BF4E009F7861 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C656D23B0BF4E009F7861 /* SignUpViewController.xib */; };
+		893C657423B13FD7009F7861 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C657223B13FD7009F7861 /* AccountViewController.swift */; };
+		893C657523B13FD7009F7861 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C657323B13FD7009F7861 /* AccountViewController.xib */; };
+		893C657923B14035009F7861 /* ListEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C657723B14035009F7861 /* ListEventsViewController.swift */; };
+		893C657A23B14035009F7861 /* ListEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C657823B14035009F7861 /* ListEventsViewController.xib */; };
+		893C657E23B14078009F7861 /* HomeEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C657C23B14078009F7861 /* HomeEventsViewController.swift */; };
+		893C657F23B14078009F7861 /* HomeEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C657D23B14078009F7861 /* HomeEventsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +40,13 @@
 		893C656B23B0BF4E009F7861 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		893C656C23B0BF4E009F7861 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		893C656D23B0BF4E009F7861 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		893C657223B13FD7009F7861 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		893C657323B13FD7009F7861 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		893C657723B14035009F7861 /* ListEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEventsViewController.swift; sourceTree = "<group>"; };
+		893C657823B14035009F7861 /* ListEventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListEventsViewController.xib; sourceTree = "<group>"; };
+		893C657C23B14078009F7861 /* HomeEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventsViewController.swift; sourceTree = "<group>"; };
+		893C657D23B14078009F7861 /* HomeEventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeEventsViewController.xib; sourceTree = "<group>"; };
+		893C658323B1535D009F7861 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BFD51D3BCABFF66307F1116D /* Pods_MyEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F921F23B09C0D3D3E5D6EAEC /* Pods-MyEvents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEvents.release.xcconfig"; path = "Target Support Files/Pods-MyEvents/Pods-MyEvents.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +93,7 @@
 		893911E223AFF3670001693B /* MyEvents */ = {
 			isa = PBXGroup;
 			children = (
+				893C658223B1535D009F7861 /* Helpers */,
 				893911F923AFF46D0001693B /* Platfroms */,
 				893911F823AFF4200001693B /* Domains */,
 				893911F723AFF40F0001693B /* Scenes */,
@@ -95,6 +109,7 @@
 		893911F723AFF40F0001693B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				893C657623B13FE7009F7861 /* Events */,
 				893911FC23AFF5620001693B /* Authentification */,
 				893911FA23AFF4CC0001693B /* Home */,
 			);
@@ -133,6 +148,8 @@
 				893C656C23B0BF4E009F7861 /* LoginViewController.xib */,
 				893C656A23B0BF4E009F7861 /* SignUpViewController.swift */,
 				893C656D23B0BF4E009F7861 /* SignUpViewController.xib */,
+				893C657223B13FD7009F7861 /* AccountViewController.swift */,
+				893C657323B13FD7009F7861 /* AccountViewController.xib */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
@@ -149,6 +166,25 @@
 			children = (
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		893C657623B13FE7009F7861 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				893C657723B14035009F7861 /* ListEventsViewController.swift */,
+				893C657823B14035009F7861 /* ListEventsViewController.xib */,
+				893C657C23B14078009F7861 /* HomeEventsViewController.swift */,
+				893C657D23B14078009F7861 /* HomeEventsViewController.xib */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		893C658223B1535D009F7861 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				893C658323B1535D009F7861 /* Utilities.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		9B2C0AB45A06B1C17CB31716 /* Frameworks */ = {
@@ -220,9 +256,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				893C657023B0BF4E009F7861 /* LoginViewController.xib in Resources */,
+				893C657523B13FD7009F7861 /* AccountViewController.xib in Resources */,
 				893911F023AFF36B0001693B /* LaunchScreen.storyboard in Resources */,
 				8939122423B02D030001693B /* GoogleService-Info.plist in Resources */,
 				893911ED23AFF36B0001693B /* Assets.xcassets in Resources */,
+				893C657F23B14078009F7861 /* HomeEventsViewController.xib in Resources */,
+				893C657A23B14035009F7861 /* ListEventsViewController.xib in Resources */,
 				893C657123B0BF4E009F7861 /* SignUpViewController.xib in Resources */,
 				8939120223AFF9640001693B /* HomeViewController.xib in Resources */,
 			);
@@ -278,6 +317,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				893C656F23B0BF4E009F7861 /* LoginViewController.swift in Sources */,
+				893C657923B14035009F7861 /* ListEventsViewController.swift in Sources */,
+				893C657E23B14078009F7861 /* HomeEventsViewController.swift in Sources */,
+				893C657423B13FD7009F7861 /* AccountViewController.swift in Sources */,
 				893C656E23B0BF4E009F7861 /* SignUpViewController.swift in Sources */,
 				893911E423AFF3670001693B /* AppDelegate.swift in Sources */,
 				8939120123AFF9640001693B /* HomeViewController.swift in Sources */,

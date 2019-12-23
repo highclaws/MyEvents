@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class SignUpViewController: UIViewController {
     //Outlet
@@ -20,11 +22,14 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     
+    @IBOutlet weak var ErrorLabel: UILabel!
+    
     //Properties
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
+        ErrorLabel.alpha = 0
         // Do any additional setup after loading the view.
     }
     // private function
@@ -47,12 +52,53 @@ class SignUpViewController: UIViewController {
         passwordTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
     }
+    func valedateFields() -> String? {
+        let username = usernameTextField.text!
+        let email = emailTextField.text!
+        let password = passwordTextField.text!
+        
+        // check that all fields are filled in
+        if username.trimmingCharacters(in: .whitespacesAndNewlines) == "" && email.trimmingCharacters(in: .whitespacesAndNewlines) == "" && password.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+                return "Erreur : les champs ne sont pas complets"
+        }
+        return nil
+    }
     
     @IBAction func touchToSignUp(_ sender: Any) {
-        if usernameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" {
-            print("username : \(usernameTextField.text ?? "jon")")
-            print("password : \(passwordTextField.text ?? "doe")")
-            print("email : \(emailTextField.text ?? "jondoe@gmail.com")")
+        
+        
+        let error = valedateFields()
+        
+        if error != nil {
+            showError(error!)
+        } else {
+        let username = usernameTextField.text!
+        let email = emailTextField.text!
+        let password = passwordTextField.text!
+
+            print("Inscription de \(usernameTextField.text ?? "")")
+            Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
+                
+             
+                
+                    let db = Firestore.firestore()
+                
+                    var ref: DocumentReference? = nil
+                ref = db.collection("users").addDocument(data: [
+                    "username": username,
+                    "email": email,
+                    "password": password
+                ]) { (err) in
+                    
+                    if err != nil {
+                        self.showError("error saveing data user")
+                    } else {
+                        print("Document added with ID: \(ref!.documentID)")
+                        // todo
+                        //transitionToHomeEvent()
+                    }
+                }
+            }
         }
     }
     
@@ -64,7 +110,20 @@ class SignUpViewController: UIViewController {
         self.navigationController?.pushViewController(LoginViewController(), animated: true)
         })
     }
-    
+    func showError(_ message:String) {
+        ErrorLabel.text = message
+        ErrorLabel.alpha = 1
+    }
+    func isPasswordValid(_ password : String) -> Bool {
+        
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
+    }
+    func transitionToHomeEvent() {
+        // todo
+        print("transit")
+        //storyboard?.instantiateViewController(identifier: storyboard.HomeEvents)
+    }
     
 }
 extension SignUpViewController: UITextFieldDelegate {
