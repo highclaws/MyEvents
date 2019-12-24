@@ -9,8 +9,10 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import Foundation
 
 class SignUpViewController: UIViewController {
+    
     //Outlet
     @IBOutlet weak var SignUpButton: UIButton!
     
@@ -53,12 +55,12 @@ class SignUpViewController: UIViewController {
         emailTextField.resignFirstResponder()
     }
     func valedateFields() -> String? {
-        let username = usernameTextField.text!
-        let email = emailTextField.text!
-        let password = passwordTextField.text!
+        let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         // check that all fields are filled in
-        if username.trimmingCharacters(in: .whitespacesAndNewlines) == "" && email.trimmingCharacters(in: .whitespacesAndNewlines) == "" && password.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        if username == "" && email == "" && password == "" {
                 return "Erreur : les champs ne sont pas complets"
         }
         return nil
@@ -72,30 +74,30 @@ class SignUpViewController: UIViewController {
         if error != nil {
             showError(error!)
         } else {
-        let username = usernameTextField.text!
-        let email = emailTextField.text!
-        let password = passwordTextField.text!
-
-            print("Inscription de \(usernameTextField.text ?? "")")
+            
+            let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+         
             Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
-                
-             
-                
-                    let db = Firestore.firestore()
-                
-                    var ref: DocumentReference? = nil
-                ref = db.collection("users").addDocument(data: [
-                    "username": username,
-                    "email": email,
-                    "password": password
-                ]) { (err) in
-                    
+                guard let userID = Auth.auth().currentUser?.uid else { return }
+                let db = Firestore.firestore()
+
+                var ref: DocumentReference? = nil
+
+                    ref = db.collection("users").addDocument(data: [
+                        "username": username,
+                        "email": email,
+                        "uid": userID
+                    ]) { (err) in
+
                     if err != nil {
                         self.showError("error saveing data user")
                     } else {
+                        print("Inscription de \(username)")
                         print("Document added with ID: \(ref!.documentID)")
-                        // todo
-                        //transitionToHomeEvent()
+                        self.transitionToHomeEvent()
+
                     }
                 }
             }
@@ -122,7 +124,13 @@ class SignUpViewController: UIViewController {
     func transitionToHomeEvent() {
         // todo
         print("transit")
-        //storyboard?.instantiateViewController(identifier: storyboard.HomeEvents)
+        let webView = HomeEventsViewController()
+        //self.navigationController?.pushViewController(webView, animated: true)
+
+//        let homeEventsViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeEventsViewController) as! UIViewController
+        view.window?.rootViewController = webView
+        view.window?.makeKeyAndVisible()
+
     }
     
 }

@@ -13,15 +13,24 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var firebaseToken: String = ""
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UINavigationController(rootViewController: HomeViewController())
-        window.makeKeyAndVisible()
-        self.window = window
+            FirebaseApp.configure()
+            // todo token
+            InstanceID.instanceID().instanceID(handler: { (result, error) in
+                 if let error = error {
+                     print("Error fetching remote instange ID: \(error)")
+                 } else if let result = result {
+                     print("Remote instance ID token: \(result.token)")
+                 }
+             })
         
-        return true
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            window.rootViewController = UINavigationController(rootViewController: HomeViewController())
+            window.makeKeyAndVisible()
+            self.window = window
+            
+            return true
+        }
     }
-}
-

@@ -24,6 +24,7 @@
 		893C657A23B14035009F7861 /* ListEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C657823B14035009F7861 /* ListEventsViewController.xib */; };
 		893C657E23B14078009F7861 /* HomeEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C657C23B14078009F7861 /* HomeEventsViewController.swift */; };
 		893C657F23B14078009F7861 /* HomeEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C657D23B14078009F7861 /* HomeEventsViewController.xib */; };
+		893C658523B2242E009F7861 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C658423B2242E009F7861 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		893C657C23B14078009F7861 /* HomeEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventsViewController.swift; sourceTree = "<group>"; };
 		893C657D23B14078009F7861 /* HomeEventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeEventsViewController.xib; sourceTree = "<group>"; };
 		893C658323B1535D009F7861 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		893C658423B2242E009F7861 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BFD51D3BCABFF66307F1116D /* Pods_MyEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F921F23B09C0D3D3E5D6EAEC /* Pods-MyEvents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEvents.release.xcconfig"; path = "Target Support Files/Pods-MyEvents/Pods-MyEvents.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				893C658323B1535D009F7861 /* Utilities.swift */,
+				893C658423B2242E009F7861 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				893C656E23B0BF4E009F7861 /* SignUpViewController.swift in Sources */,
 				893911E423AFF3670001693B /* AppDelegate.swift in Sources */,
 				8939120123AFF9640001693B /* HomeViewController.swift in Sources */,
+				893C658523B2242E009F7861 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
