@@ -1,15 +1,15 @@
 //
-//  HomeEventsViewController.swift
+//  HomeEventsOrgViewController.swift
 //  MyEvents
 //
-//  Created by ouali on 23/12/2019.
+//  Created by ouali on 25/12/2019.
 //  Copyright © 2019 Ouali Cherikh. All rights reserved.
 //
 
 import UIKit
 import FirebaseAuth
 
-class HomeEventsViewController: UIViewController {
+class HomeEventsOrgViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -33,6 +33,4 @@ class HomeEventsViewController: UIViewController {
              self.view.window?.rootViewController = webView
              self.view.window?.makeKeyAndVisible()
     }
-    
-
 }

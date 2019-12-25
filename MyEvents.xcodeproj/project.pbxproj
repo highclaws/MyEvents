@@ -25,6 +25,9 @@
 		893C657E23B14078009F7861 /* HomeEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C657C23B14078009F7861 /* HomeEventsViewController.swift */; };
 		893C657F23B14078009F7861 /* HomeEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C657D23B14078009F7861 /* HomeEventsViewController.xib */; };
 		893C658523B2242E009F7861 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C658423B2242E009F7861 /* Constants.swift */; };
+		893C658923B37F2D009F7861 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C658823B37F2D009F7861 /* RadioButton.swift */; };
+		893C659023B390B9009F7861 /* HomeEventsOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C658E23B390B9009F7861 /* HomeEventsOrgViewController.swift */; };
+		893C659123B390B9009F7861 /* HomeEventsOrgViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C658F23B390B9009F7861 /* HomeEventsOrgViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		893C657D23B14078009F7861 /* HomeEventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeEventsViewController.xib; sourceTree = "<group>"; };
 		893C658323B1535D009F7861 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		893C658423B2242E009F7861 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		893C658823B37F2D009F7861 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		893C658E23B390B9009F7861 /* HomeEventsOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEventsOrgViewController.swift; sourceTree = "<group>"; };
+		893C658F23B390B9009F7861 /* HomeEventsOrgViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeEventsOrgViewController.xib; sourceTree = "<group>"; };
 		BFD51D3BCABFF66307F1116D /* Pods_MyEvents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEvents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F921F23B09C0D3D3E5D6EAEC /* Pods-MyEvents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEvents.release.xcconfig"; path = "Target Support Files/Pods-MyEvents/Pods-MyEvents.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +181,8 @@
 			children = (
 				893C657723B14035009F7861 /* ListEventsViewController.swift */,
 				893C657823B14035009F7861 /* ListEventsViewController.xib */,
+				893C658E23B390B9009F7861 /* HomeEventsOrgViewController.swift */,
+				893C658F23B390B9009F7861 /* HomeEventsOrgViewController.xib */,
 				893C657C23B14078009F7861 /* HomeEventsViewController.swift */,
 				893C657D23B14078009F7861 /* HomeEventsViewController.xib */,
 			);
@@ -186,6 +194,7 @@
 			children = (
 				893C658323B1535D009F7861 /* Utilities.swift */,
 				893C658423B2242E009F7861 /* Constants.swift */,
+				893C658823B37F2D009F7861 /* RadioButton.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -263,6 +272,7 @@
 				893911F023AFF36B0001693B /* LaunchScreen.storyboard in Resources */,
 				8939122423B02D030001693B /* GoogleService-Info.plist in Resources */,
 				893911ED23AFF36B0001693B /* Assets.xcassets in Resources */,
+				893C659123B390B9009F7861 /* HomeEventsOrgViewController.xib in Resources */,
 				893C657F23B14078009F7861 /* HomeEventsViewController.xib in Resources */,
 				893C657A23B14035009F7861 /* ListEventsViewController.xib in Resources */,
 				893C657123B0BF4E009F7861 /* SignUpViewController.xib in Resources */,
@@ -319,12 +329,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				893C658923B37F2D009F7861 /* RadioButton.swift in Sources */,
 				893C656F23B0BF4E009F7861 /* LoginViewController.swift in Sources */,
 				893C657923B14035009F7861 /* ListEventsViewController.swift in Sources */,
 				893C657E23B14078009F7861 /* HomeEventsViewController.swift in Sources */,
 				893C657423B13FD7009F7861 /* AccountViewController.swift in Sources */,
 				893C656E23B0BF4E009F7861 /* SignUpViewController.swift in Sources */,
 				893911E423AFF3670001693B /* AppDelegate.swift in Sources */,
+				893C659023B390B9009F7861 /* HomeEventsOrgViewController.swift in Sources */,
 				8939120123AFF9640001693B /* HomeViewController.swift in Sources */,
 				893C658523B2242E009F7861 /* Constants.swift in Sources */,
 			);

@@ -14,9 +14,9 @@ import Foundation
 class SignUpViewController: UIViewController {
     
     //Outlet
-    @IBOutlet weak var SignUpButton: UIButton!
+    @IBOutlet var SignUpButton: UIButton!
     
-    @IBOutlet weak var LoginButton: UIButton!
+    @IBOutlet var LoginButton: UIButton!
     
     @IBOutlet weak var usernameTextField: UITextField!
     
@@ -27,12 +27,22 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var ErrorLabel: UILabel!
     
     //Properties
+    @IBOutlet weak var userRole: RadioButton!
     
+    @IBOutlet weak var OrgRole: RadioButton!
+    var role: String!
+
+    override func awakeFromNib() {
+        self.view.layoutIfNeeded()
+        userRole.isSelected = true
+        OrgRole.isSelected = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
         ErrorLabel.alpha = 0
-        // Do any additional setup after loading the view.
+        userRole?.alternateButton = [OrgRole!]
+        OrgRole?.alternateButton = [userRole!]
     }
     // private function
     private func setupButton() {
@@ -58,7 +68,7 @@ class SignUpViewController: UIViewController {
         let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+
         // check that all fields are filled in
         if username == "" && email == "" && password == "" {
                 return "Erreur : les champs ne sont pas complets"
@@ -67,14 +77,24 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func touchToSignUp(_ sender: Any) {
+  
+        guard let utilisateur = (userRole) else { return }
+        guard let organisateur = (OrgRole) else { return }
         
+        if utilisateur.isSelected == true {
+            role = "Utilisateur"
+        } else if organisateur.isSelected == true {
+            role = "Organisateur"
+        } else {
+            role = "Utilisateur"
+        }
         
         let error = valedateFields()
         
-        if error != nil {
+        if error != nil && role != nil {
             showError(error!)
         } else {
-            
+           
             let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -88,7 +108,8 @@ class SignUpViewController: UIViewController {
                     ref = db.collection("users").addDocument(data: [
                         "username": username,
                         "email": email,
-                        "uid": userID
+                        "uid": userID,
+                        "role": self.role!
                     ]) { (err) in
 
                     if err != nil {
@@ -96,8 +117,8 @@ class SignUpViewController: UIViewController {
                     } else {
                         print("Inscription de \(username)")
                         print("Document added with ID: \(ref!.documentID)")
+                        
                         self.transitionToHomeEvent()
-
                     }
                 }
             }
@@ -121,16 +142,23 @@ class SignUpViewController: UIViewController {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
     }
+    
     func transitionToHomeEvent() {
-        // todo
-        print("transit")
-        let webView = HomeEventsViewController()
-        //self.navigationController?.pushViewController(webView, animated: true)
+        print("ici")
+        
+        if role == "Utilisateur" {
+            print("Utilisateur")
+            let webViewhome = HomeEventsViewController()
+            view.window?.rootViewController = webViewhome
+            view.window?.makeKeyAndVisible()
 
-//        let homeEventsViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeEventsViewController) as! UIViewController
-        view.window?.rootViewController = webView
-        view.window?.makeKeyAndVisible()
-
+        } else if role == "Organisateur" {
+            print("Organisateur")
+            let webViewOrg = HomeEventsOrgViewController()
+            view.window?.rootViewController = webViewOrg
+            view.window?.makeKeyAndVisible()
+        }
+  
     }
     
 }

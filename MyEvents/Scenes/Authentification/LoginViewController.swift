@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import Foundation
+
 
 class LoginViewController: UIViewController {
 
@@ -17,7 +19,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var SignUpButton: UIButton!
+    @IBOutlet var SignUpButton: UIButton!
     
     @IBOutlet weak var ErrorLabel: UILabel!
     
@@ -59,10 +61,8 @@ class LoginViewController: UIViewController {
                         //self.showError(error! as! String)
                     } else {
                         print(user as Any)
+                
                         let webView = HomeEventsViewController()
-                        //self.navigationController?.pushViewController(webView, animated: true)
-
-                        //let homeEventsViewController = storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.homeEventsViewController) as! UIViewController
                         self.view.window?.rootViewController = webView
                         self.view.window?.makeKeyAndVisible()
 
