@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import Foundation
 import FirebaseAuth
 import Firebase
-import Foundation
 
 
 class LoginViewController: UIViewController {
@@ -22,7 +22,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var SignUpButton: UIButton!
     
     @IBOutlet weak var ErrorLabel: UILabel!
-    
+    var db = Firestore.firestore()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         ErrorLabel.alpha = 0
@@ -56,16 +57,32 @@ class LoginViewController: UIViewController {
                     if error != nil {
                         // couldn'it sign in
                         self.showError("Mot de passe incorrect")
-
                         print(error.debugDescription)
-                        //self.showError(error! as! String)
                     } else {
-                        print(user as Any)
-                
-                        let webView = HomeEventsViewController()
-                        self.view.window?.rootViewController = webView
-                        self.view.window?.makeKeyAndVisible()
-
+                        //print(user as Any)
+                        if let user = Auth.auth().currentUser {
+                        // user connect
+                        let docRef = self.db.collection("users").document(user.uid)
+                               
+                              docRef.getDocument { (document, error) in
+                              if let document = document, document.exists {
+                               
+                                if document["role"] as? String == "Utilisateur" {
+                                        print("user")
+                                        let webViewhome = HomeEventsViewController()
+                                        self.view.window?.rootViewController = webViewhome
+                                        self.view.window?.makeKeyAndVisible()
+                                   } else if document["role"] as? String == "Organisateur" {
+                                        print("org")
+                                        let webViewOrg = HomeEventsOrgViewController()
+                                        self.view.window?.rootViewController = webViewOrg
+                                        self.view.window?.makeKeyAndVisible()
+                                }
+                              } else {
+                                      print("Document does not exist")
+                                  }
+                              }
+                        }
                     }
                 })
         }
@@ -79,9 +96,13 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(SignUpViewController(), animated: true)
         })
     }
-    
     func showError(_ message:String) {
         ErrorLabel.text = message
         ErrorLabel.alpha = 1
+    }
+}
+extension String {
+     func isEqualToString(find: String) -> Bool {
+        return String(format: self) == find
     }
 }

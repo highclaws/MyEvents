@@ -103,24 +103,43 @@ class SignUpViewController: UIViewController {
                 guard let userID = Auth.auth().currentUser?.uid else { return }
                 let db = Firestore.firestore()
 
-                var ref: DocumentReference? = nil
-
-                    ref = db.collection("users").addDocument(data: [
-                        "username": username,
+               // var ref: DocumentReference? = nil
+//                    ref = db.collection("users").addDocument(data: [
+//                        "username": username,
+//                        "email": email,
+//                        "uid": userID,
+//                        "role": self.role!
+//                    ]) { (err) in
+//
+//                    if err != nil {
+//                        self.showError("error saveing data user")
+//                    } else {
+//                        print("Inscription de \(username)")
+//                        print("Document added with ID: \(ref!.documentID)")
+//
+//                        self.transitionToHomeEvent()
+//                    }
+//                }
+                
+                // test 2
+                
+                db.collection("users").document(userID).setData([
+                       "username": username,
                         "email": email,
                         "uid": userID,
                         "role": self.role!
-                    ]) { (err) in
-
-                    if err != nil {
-                        self.showError("error saveing data user")
-                    } else {
-                        print("Inscription de \(username)")
-                        print("Document added with ID: \(ref!.documentID)")
-                        
-                        self.transitionToHomeEvent()
+                ]) { (err) in
+                        if err != nil {
+                            self.showError("error saveing data user")
+                        } else {
+                            print("Inscription de \(username)")
+                            print("Document added with ID: \(userID)")
+                            self.transitionToHomeEvent()
+                        }
                     }
-                }
+                
+                
+                
             }
         }
     }

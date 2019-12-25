@@ -29,6 +29,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgP-Oq-tbX">
                     <rect key="frame" x="330" y="53" width="57" height="35"/>
                     <state key="normal" title="Account"/>
+                    <connections>
+                        <action selector="touchToAccount:" destination="-1" eventType="touchUpInside" id="x1y-4S-x2T"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenues" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ap-Bw-BvR">
                     <rect key="frame" x="84" y="326" width="88" height="21"/>

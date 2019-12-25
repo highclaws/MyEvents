@@ -29,8 +29,14 @@ class HomeEventsOrgViewController: UIViewController {
     @IBAction func touchSignOut(_ sender: Any) {
         try! Auth.auth().signOut()
 
-            let webView = LoginViewController()
-             self.view.window?.rootViewController = webView
-             self.view.window?.makeKeyAndVisible()
+        let webView = LoginViewController()
+        self.view.window?.rootViewController = webView
+        self.view.window?.makeKeyAndVisible()
+    }
+    
+    @IBAction func touchToAccount(_ sender: Any) {
+        let webView = AccountViewController()
+        self.view.window?.rootViewController = webView
+        self.view.window?.makeKeyAndVisible()
     }
 }
