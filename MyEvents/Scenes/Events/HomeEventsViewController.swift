@@ -16,6 +16,7 @@ class HomeEventsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dismiss(animated: true, completion: nil)
         let db = Firestore.firestore()
 
         if let user = Auth.auth().currentUser {
@@ -34,7 +35,17 @@ class HomeEventsViewController: UIViewController {
             fatalError(" Erreur : aucun user connect")
         }
     }
-
+    
+    @objc func touchSearchButton() {
+        let mapViewController = SearchViewController()
+        self.navigationController?.pushViewController(mapViewController, animated: true)
+    }
+    
+    @objc func touchAddButton() {
+        let createViewController = EventsCreateViewController()
+        self.present(createViewController, animated: true)
+    }
+    
 
     @IBAction func touchSignOut(_ sender: Any) {
         try! Auth.auth().signOut()

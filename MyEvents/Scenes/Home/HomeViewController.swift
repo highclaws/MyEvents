@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Høme"    
+        self.title = "Høme"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,12 +25,14 @@ class HomeViewController: UIViewController {
     }
    
     @IBAction func touchConnect(_ sender: Any) {
+        
         guard let navigationView = self.navigationController?.view else {
             return
         }
-        UIView.transition(with: navigationView, duration: 0.5, options: .transitionFlipFromTop, animations: {
+        UIView.transition(with: navigationView, duration: 0.5, options: .transitionFlipFromLeft, animations: {
                 self.navigationController?.pushViewController(LoginViewController(), animated: true)
         })
+        
     }
     override var prefersStatusBarHidden: Bool {
         return true

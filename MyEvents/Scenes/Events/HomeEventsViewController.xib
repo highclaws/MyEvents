@@ -34,7 +34,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenues" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7w-Bs-6eP">
-                    <rect key="frame" x="84" y="326" width="88" height="21"/>
+                    <rect key="frame" x="84" y="326" width="88" height="9"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="88" id="nI8-2W-WXR"/>
                     </constraints>
@@ -42,14 +42,14 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZb-Pr-4uh">
-                    <rect key="frame" x="222" y="326" width="99" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZb-Pr-4uh">
+                    <rect key="frame" x="222" y="325.5" width="99" height="9.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7rU-En-Q9s">
-                    <rect key="frame" x="76" y="452" width="213" height="44"/>
+                    <rect key="frame" x="76" y="440" width="213" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3M4-Un-GKm">
@@ -61,7 +61,7 @@
                     <state key="normal" title="Parcourcir les evenements"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rechercher un evenement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xw4-dp-g0r">
-                    <rect key="frame" x="74" y="395" width="201" height="21"/>
+                    <rect key="frame" x="74" y="383" width="201" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="GYa-lf-kcU"/>
                     </constraints>

@@ -21,14 +21,41 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var SignUpButton: UIButton!
     
+    @IBOutlet weak var LoginButton: UIButton!
+    
     @IBOutlet weak var ErrorLabel: UILabel!
     var db = Firestore.firestore()
+    weak var customView : UIView!
+
+
+     @objc func btnButtonClicked(_ gesture : UITapGestureRecognizer) {
+       self.navigationController?.popViewController(animated: true)
+     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ErrorLabel.alpha = 0
+        setupButton()
+        checkConnect()
 
-        // Do any additional setup after loading the view.
+        ErrorLabel.alpha = 0
+        /* back not work
+        let newBackButton = UIBarButtonItem(title: "< back", style: .plain, target: nil, action: nil)
+        
+        self.navigationItem.leftBarButtonItem = newBackButton
+         
+        self.navigationController?.navigationItem.backBarButtonItem =
+        UIBarButtonItem(title:"Title", style:.plain, target:nil, action:nil)
+         */
+    }
+    private func setupButton() {
+        SignUpButton.layer.cornerRadius = 20
+        LoginButton.layer.cornerRadius = 20
+        LoginButton.layer.borderWidth = 3
+        LoginButton.layer.borderColor = UIColor.red.cgColor
+    }
+
+    override func didReceiveMemoryWarning() {
+          super.didReceiveMemoryWarning()
     }
     
     func valedateFields() -> String? {
@@ -60,34 +87,11 @@ class LoginViewController: UIViewController {
                         print(error.debugDescription)
                     } else {
                         //print(user as Any)
-                        if let user = Auth.auth().currentUser {
-                        // user connect
-                        let docRef = self.db.collection("users").document(user.uid)
-                               
-                              docRef.getDocument { (document, error) in
-                              if let document = document, document.exists {
-                               
-                                if document["role"] as? String == "Utilisateur" {
-                                        print("user")
-                                        let webViewhome = HomeEventsViewController()
-                                        self.view.window?.rootViewController = webViewhome
-                                        self.view.window?.makeKeyAndVisible()
-                                   } else if document["role"] as? String == "Organisateur" {
-                                        print("org")
-                                        let webViewOrg = HomeEventsOrgViewController()
-                                        self.view.window?.rootViewController = webViewOrg
-                                        self.view.window?.makeKeyAndVisible()
-                                }
-                              } else {
-                                      print("Document does not exist")
-                                  }
-                              }
-                        }
+                        self.checkConnect()
                     }
                 })
         }
     }
-    
     @IBAction func touchSignUp(_ sender: Any) {
         guard let navigationView = self.navigationController?.view else {
             return
@@ -95,6 +99,31 @@ class LoginViewController: UIViewController {
         UIView.transition(with: navigationView, duration: 0.5, options: .transitionFlipFromTop, animations: {
         self.navigationController?.pushViewController(SignUpViewController(), animated: true)
         })
+    }
+    
+    func checkConnect() {
+        
+        if let user = Auth.auth().currentUser {
+           // user connect
+           let docRef = self.db.collection("users").document(user.uid)
+                  
+                 docRef.getDocument { (document, error) in
+                 if let document = document, document.exists {
+                  
+                   if document["role"] as? String == "Utilisateur" {
+                           let webViewhome = HomeEventsViewController()
+                           self.view.window?.rootViewController = webViewhome
+                           self.view.window?.makeKeyAndVisible()
+                      } else if document["role"] as? String == "Organisateur" {
+                           let webViewOrg = HomeEventsOrgViewController()
+                           self.view.window?.rootViewController = webViewOrg
+                           self.view.window?.makeKeyAndVisible()
+                   }
+                 } else {
+                         print("Document does not exist")
+                     }
+                 }
+           }
     }
     func showError(_ message:String) {
         ErrorLabel.text = message

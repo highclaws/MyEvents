@@ -40,6 +40,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton()
+        setupTextFieldManager()
         ErrorLabel.alpha = 0
         userRole?.alternateButton = [OrgRole!]
         OrgRole?.alternateButton = [userRole!]
@@ -95,7 +96,7 @@ class SignUpViewController: UIViewController {
             showError(error!)
         } else {
            
-            let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let firstname = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
          
@@ -124,15 +125,17 @@ class SignUpViewController: UIViewController {
                 // test 2
                 
                 db.collection("users").document(userID).setData([
-                       "username": username,
-                        "email": email,
-                        "uid": userID,
-                        "role": self.role!
+                            "firstname": firstname,
+                            "lastname": "",
+                            "email": email,
+                            "uid": userID,
+                            "phone": "",
+                             "role": self.role!
                 ]) { (err) in
                         if err != nil {
                             self.showError("error saveing data user")
                         } else {
-                            print("Inscription de \(username)")
+                            print("Inscription de \(firstname)")
                             print("Document added with ID: \(userID)")
                             self.transitionToHomeEvent()
                         }
@@ -163,8 +166,9 @@ class SignUpViewController: UIViewController {
     }
     
     func transitionToHomeEvent() {
-        print("ici")
-        
+        let alertController = UIAlertController(title: nil, message: "User was sucessfully created", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
         if role == "Utilisateur" {
             print("Utilisateur")
             let webViewhome = HomeEventsViewController()
