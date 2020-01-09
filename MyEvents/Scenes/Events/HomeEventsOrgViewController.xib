@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeEventsOrgViewController" customModule="MyEvents" customModuleProvider="target">
             <connections>
+                <outlet property="addEvent" destination="Krh-jj-Epd" id="3mz-f2-fdn"/>
                 <outlet property="nameLabel" destination="1TP-dB-B6H" id="Nwb-as-FhC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -87,6 +88,9 @@
                         <constraint firstAttribute="height" constant="42" id="Fuu-ej-fQy"/>
                     </constraints>
                     <state key="normal" title="Ajouter un evenement"/>
+                    <connections>
+                        <action selector="touchAddButton:" destination="-1" eventType="touchUpInside" id="CUu-g5-Pka"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -31,12 +31,12 @@ class LoginViewController: UIViewController {
      @objc func btnButtonClicked(_ gesture : UITapGestureRecognizer) {
        self.navigationController?.popViewController(animated: true)
      }
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButton()
-        checkConnect()
 
+        setupButton()
         ErrorLabel.alpha = 0
         /* back not work
         let newBackButton = UIBarButtonItem(title: "< back", style: .plain, target: nil, action: nil)
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController {
            if error != nil {
                showError(error!)
            } else {
-                // create cleaned
+                // create cleaned textfield
                 let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 // connection
@@ -86,45 +86,27 @@ class LoginViewController: UIViewController {
                         self.showError("Mot de passe incorrect")
                         print(error.debugDescription)
                     } else {
-                        //print(user as Any)
-                        self.checkConnect()
+                         // user connect
+                         let webViewOrg = HomeEventsOrgViewController()
+                         self.view.window?.rootViewController = webViewOrg
+                         self.view.window?.makeKeyAndVisible()
                     }
                 })
         }
     }
     @IBAction func touchSignUp(_ sender: Any) {
+        
         guard let navigationView = self.navigationController?.view else {
             return
         }
         UIView.transition(with: navigationView, duration: 0.5, options: .transitionFlipFromTop, animations: {
         self.navigationController?.pushViewController(SignUpViewController(), animated: true)
         })
+        
+
     }
     
-    func checkConnect() {
-        
-        if let user = Auth.auth().currentUser {
-           // user connect
-           let docRef = self.db.collection("users").document(user.uid)
-                  
-                 docRef.getDocument { (document, error) in
-                 if let document = document, document.exists {
-                  
-                   if document["role"] as? String == "Utilisateur" {
-                           let webViewhome = HomeEventsViewController()
-                           self.view.window?.rootViewController = webViewhome
-                           self.view.window?.makeKeyAndVisible()
-                      } else if document["role"] as? String == "Organisateur" {
-                           let webViewOrg = HomeEventsOrgViewController()
-                           self.view.window?.rootViewController = webViewOrg
-                           self.view.window?.makeKeyAndVisible()
-                   }
-                 } else {
-                         print("Document does not exist")
-                     }
-                 }
-           }
-    }
+    
     func showError(_ message:String) {
         ErrorLabel.text = message
         ErrorLabel.alpha = 1

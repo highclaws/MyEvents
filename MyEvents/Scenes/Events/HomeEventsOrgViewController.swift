@@ -14,6 +14,8 @@ class HomeEventsOrgViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var addEvent: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let db = Firestore.firestore()
@@ -26,6 +28,14 @@ class HomeEventsOrgViewController: UIViewController {
            if let document = document, document.exists {
                //print(document.data()!)
                 self.nameLabel.text = document["username"] as? String
+                let role: String = document["role"] as! String
+            
+                if role == "Utilisateur" {
+                    self.addEvent.alpha = 0
+
+                } else if role == "Organisateur"{
+                    self.addEvent.alpha = 1
+                }
                } else {
                    print("Document does not exist")
                }
@@ -33,6 +43,7 @@ class HomeEventsOrgViewController: UIViewController {
         } else {
             fatalError(" Erreur : aucun user connect")
         }
+        self.navigationController?.delegate = self as! UINavigationControllerDelegate
     }
     @objc func touchSearchButton() {
         let mapViewController = SearchViewController()
@@ -42,6 +53,10 @@ class HomeEventsOrgViewController: UIViewController {
     @objc func touchAddButton() {
         let createViewController = EventsCreateViewController()
         self.present(createViewController, animated: true)
+    }
+    @IBAction func touchAddButton(_ sender: Any) {
+        let createViewController = EventsCreateViewController()
+         self.present(createViewController, animated: true)
     }
     
     @IBAction func touchSignOut(_ sender: Any) {
@@ -53,6 +68,11 @@ class HomeEventsOrgViewController: UIViewController {
     }
     
     @IBAction func touchToAccount(_ sender: Any) {
+        //let webView = AccountViewController()
+        //self.present(webView, animated: true, completion: nil)
+//        let homeView = AccountViewController(nibName: "AccountViewController", bundle: nil)
+//        present(homeView, animated: true, completion: nil)
+        
         let webView = AccountViewController()
         self.view.window?.rootViewController = webView
         self.view.window?.makeKeyAndVisible()

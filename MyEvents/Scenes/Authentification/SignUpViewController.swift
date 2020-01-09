@@ -78,16 +78,16 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func touchToSignUp(_ sender: Any) {
-  
+
         guard let utilisateur = (userRole) else { return }
         guard let organisateur = (OrgRole) else { return }
         
         if utilisateur.isSelected == true {
-            role = "Utilisateur"
+            self.role = "Utilisateur"
         } else if organisateur.isSelected == true {
-            role = "Organisateur"
+            self.role = "Organisateur"
         } else {
-            role = "Utilisateur"
+            self.role = "Utilisateur"
         }
         
         let error = valedateFields()
@@ -103,26 +103,6 @@ class SignUpViewController: UIViewController {
             Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
                 guard let userID = Auth.auth().currentUser?.uid else { return }
                 let db = Firestore.firestore()
-
-               // var ref: DocumentReference? = nil
-//                    ref = db.collection("users").addDocument(data: [
-//                        "username": username,
-//                        "email": email,
-//                        "uid": userID,
-//                        "role": self.role!
-//                    ]) { (err) in
-//
-//                    if err != nil {
-//                        self.showError("error saveing data user")
-//                    } else {
-//                        print("Inscription de \(username)")
-//                        print("Document added with ID: \(ref!.documentID)")
-//
-//                        self.transitionToHomeEvent()
-//                    }
-//                }
-                
-                // test 2
                 
                 db.collection("users").document(userID).setData([
                             "firstname": firstname,
@@ -130,7 +110,7 @@ class SignUpViewController: UIViewController {
                             "email": email,
                             "uid": userID,
                             "phone": "",
-                             "role": self.role!
+                            "role": self.role
                 ]) { (err) in
                         if err != nil {
                             self.showError("error saveing data user")
@@ -169,18 +149,11 @@ class SignUpViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: "User was sucessfully created", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
-        if role == "Utilisateur" {
-            print("Utilisateur")
-            let webViewhome = HomeEventsViewController()
-            view.window?.rootViewController = webViewhome
-            view.window?.makeKeyAndVisible()
 
-        } else if role == "Organisateur" {
-            print("Organisateur")
-            let webViewOrg = HomeEventsOrgViewController()
-            view.window?.rootViewController = webViewOrg
-            view.window?.makeKeyAndVisible()
-        }
+        let webViewOrg = HomeEventsOrgViewController()
+        view.window?.rootViewController = webViewOrg
+        view.window?.makeKeyAndVisible()
+        
   
     }
     
